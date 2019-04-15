@@ -54,8 +54,10 @@
     if (_active) {
         self.layer.borderColor = _activeColor.CGColor;
         _label.textColor = _activeColor;
-        _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(update:) userInfo:nil repeats:YES];
-        [_timer fire];
+        if (!_timer) {
+            _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(update:) userInfo:nil repeats:YES];
+            [_timer fire];
+        }
     } else {
         self.layer.borderColor = _normalColor.CGColor;
         _label.textColor = _normalColor;
