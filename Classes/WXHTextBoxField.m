@@ -150,9 +150,14 @@
 
 - (void)deleteBackward; {
     if (_editingIndex > 0) {
-        _items[_editingIndex].label.text = nil;
-        self.editingIndex = _editingIndex - 1;
-        _items[_editingIndex].label.text = nil;
+        // 判断如果当前编辑的位置是最后一位并且最后一位已有内容，只做清空内容处理，不做退格处理
+        UILabel *label = _items[_editingIndex].label;
+        if (label.text.length > 0 && _editingIndex == _items.count - 1) {
+            label.text = nil;
+        } else {
+            self.editingIndex = _editingIndex - 1;
+            _items[_editingIndex].label.text = nil;
+        }
     }
     if ([_delegate respondsToSelector:@selector(textField:textDidChange:)]) {
         [_delegate textField:self textDidChange:self.text];
