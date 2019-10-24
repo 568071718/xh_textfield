@@ -15,8 +15,10 @@
 		89B8F68D2260964B004694A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F68C2260964B004694A6 /* main.m */; };
 		89B8F6972260964B004694A6 /* xh_textfieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F6962260964B004694A6 /* xh_textfieldTests.m */; };
 		89B8F6A22260964B004694A6 /* xh_textfieldUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F6A12260964B004694A6 /* xh_textfieldUITests.m */; };
-		89B8F6B222609678004694A6 /* WXHTextBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F6B122609678004694A6 /* WXHTextBox.m */; };
-		89B8F6B5226096A0004694A6 /* WXHTextBoxField.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F6B4226096A0004694A6 /* WXHTextBoxField.m */; };
+		89D3D50A23617F80007947DC /* WXHCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3D50923617F80007947DC /* WXHCodeView.m */; };
+		89D3D50E23618039007947DC /* WXHCodeViewDefaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3D50D23618039007947DC /* WXHCodeViewDefaultItem.m */; };
+		89D3D511236180DC007947DC /* WXHCodeViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3D510236180DC007947DC /* WXHCodeViewItem.m */; };
+		89D3D51523618867007947DC /* DemoBoxItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3D51423618867007947DC /* DemoBoxItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +55,14 @@
 		89B8F69D2260964B004694A6 /* xh_textfieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xh_textfieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B8F6A12260964B004694A6 /* xh_textfieldUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xh_textfieldUITests.m; sourceTree = "<group>"; };
 		89B8F6A32260964B004694A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89B8F6B022609678004694A6 /* WXHTextBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHTextBox.h; sourceTree = "<group>"; };
-		89B8F6B122609678004694A6 /* WXHTextBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHTextBox.m; sourceTree = "<group>"; };
-		89B8F6B3226096A0004694A6 /* WXHTextBoxField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHTextBoxField.h; sourceTree = "<group>"; };
-		89B8F6B4226096A0004694A6 /* WXHTextBoxField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHTextBoxField.m; sourceTree = "<group>"; };
+		89D3D50823617F80007947DC /* WXHCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHCodeView.h; sourceTree = "<group>"; };
+		89D3D50923617F80007947DC /* WXHCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHCodeView.m; sourceTree = "<group>"; };
+		89D3D50C23618039007947DC /* WXHCodeViewDefaultItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHCodeViewDefaultItem.h; sourceTree = "<group>"; };
+		89D3D50D23618039007947DC /* WXHCodeViewDefaultItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHCodeViewDefaultItem.m; sourceTree = "<group>"; };
+		89D3D50F236180DC007947DC /* WXHCodeViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHCodeViewItem.h; sourceTree = "<group>"; };
+		89D3D510236180DC007947DC /* WXHCodeViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHCodeViewItem.m; sourceTree = "<group>"; };
+		89D3D51323618867007947DC /* DemoBoxItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoBoxItem.h; sourceTree = "<group>"; };
+		89D3D51423618867007947DC /* DemoBoxItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoBoxItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		89B8F6712260964A004694A6 = {
 			isa = PBXGroup;
 			children = (
+				89D3D5122361882A007947DC /* CustomDemo */,
 				89B8F6AF2260965E004694A6 /* Classes */,
 				89B8F67C2260964A004694A6 /* xh_textfield */,
 				89B8F6952260964B004694A6 /* xh_textfieldTests */,
@@ -142,12 +149,23 @@
 		89B8F6AF2260965E004694A6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				89B8F6B3226096A0004694A6 /* WXHTextBoxField.h */,
-				89B8F6B4226096A0004694A6 /* WXHTextBoxField.m */,
-				89B8F6B022609678004694A6 /* WXHTextBox.h */,
-				89B8F6B122609678004694A6 /* WXHTextBox.m */,
+				89D3D50F236180DC007947DC /* WXHCodeViewItem.h */,
+				89D3D510236180DC007947DC /* WXHCodeViewItem.m */,
+				89D3D50C23618039007947DC /* WXHCodeViewDefaultItem.h */,
+				89D3D50D23618039007947DC /* WXHCodeViewDefaultItem.m */,
+				89D3D50823617F80007947DC /* WXHCodeView.h */,
+				89D3D50923617F80007947DC /* WXHCodeView.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		89D3D5122361882A007947DC /* CustomDemo */ = {
+			isa = PBXGroup;
+			children = (
+				89D3D51323618867007947DC /* DemoBoxItem.h */,
+				89D3D51423618867007947DC /* DemoBoxItem.m */,
+			);
+			path = CustomDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,10 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89B8F6B5226096A0004694A6 /* WXHTextBoxField.m in Sources */,
-				89B8F6B222609678004694A6 /* WXHTextBox.m in Sources */,
+				89D3D511236180DC007947DC /* WXHCodeViewItem.m in Sources */,
+				89D3D50A23617F80007947DC /* WXHCodeView.m in Sources */,
+				89D3D50E23618039007947DC /* WXHCodeViewDefaultItem.m in Sources */,
 				89B8F6822260964A004694A6 /* ViewController.m in Sources */,
 				89B8F68D2260964B004694A6 /* main.m in Sources */,
+				89D3D51523618867007947DC /* DemoBoxItem.m in Sources */,
 				89B8F67F2260964A004694A6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

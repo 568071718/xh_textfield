@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "WXHTextBoxField.h"
+#import "WXHCodeView.h"
+#import "DemoBoxItem.h"
 
-@interface ViewController () <WXHTextBoxFieldDelegate>
+@interface ViewController () <WXHCodeViewDelegate>
 
-@property (weak ,nonatomic) WXHTextBoxField *testView;
 @property (strong ,nonatomic) UILabel *label;
 @end
 
@@ -21,34 +21,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    WXHTextBoxField *test = [[WXHTextBoxField alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 44.f)];
-    test.numberOfItem = 6;
-    test.insets = UIEdgeInsetsMake(0, 10, 0, 10.f);
-    test.delegate = self;
-    [self.view addSubview:test];
+    WXHCodeView *customCodeView = [[WXHCodeView alloc] initWithNumberOfItem:6 itemClass:[DemoBoxItem class]];
+    customCodeView.frame = CGRectMake(0, 111, self.view.frame.size.width, 44.f);
+    customCodeView.edgeInsets = UIEdgeInsetsMake(0, 10, 0, 10.f);
+    customCodeView.delegate = self;
+    for (DemoBoxItem *item in customCodeView.items) {
+        item.label.font = [UIFont boldSystemFontOfSize:22];
+    }
+    [self.view addSubview:customCodeView];
     
+    WXHCodeView *codeView = [[WXHCodeView alloc] initWithNumberOfItem:6];
+    codeView.frame = CGRectMake(0, CGRectGetMaxY(customCodeView.frame) + 44.f, self.view.frame.size.width, 44.f);
+    codeView.edgeInsets = UIEdgeInsetsMake(0, 10, 0, 10.f);
+    codeView.delegate = self;
+    for (WXHCodeViewDefaultItem *item in codeView.items) {
+        item.label.font = [UIFont boldSystemFontOfSize:22];
+    }
+    [self.view addSubview:codeView];
     
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(test.frame) + 44.f, self.view.frame.size.width, 44.f)];
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(codeView.frame) + 44.f, self.view.frame.size.width, 44.f)];
     _label.font = [UIFont systemFontOfSize:15];
     _label.textColor = [UIColor blackColor];
     _label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_label];
-    
-    _testView = test;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [_testView resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 #pragma mark -
-- (void)textField:(WXHTextBoxField *)textField textDidChange:(NSString *)text; {
-    
-}
 
-- (void)textField:(WXHTextBoxField *)textField didFinish:(NSString *)text; {
-    [textField resignFirstResponder];
-    _label.text = [NSString stringWithFormat:@"输入完成,当前输入: %@" ,textField.text];
+- (void)codeView:(WXHCodeView *)codeView fullText:(NSString *)fullText {
+    [codeView resignFirstResponder];
+    _label.text = [NSString stringWithFormat:@"输入完成,当前输入: %@" ,fullText];
 }
 
 @end

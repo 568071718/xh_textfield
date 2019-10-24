@@ -1,14 +1,14 @@
 //
-//  WXHTextBox.m
+//  DemoBoxItem.m
 //  xh_textfield
 //
-//  Created by 路 on 2019/4/12.
+//  Created by 路 on 2019/10/24.
 //  Copyright © 2019年 路. All rights reserved.
 //
 
-#import "WXHTextBox.h"
+#import "DemoBoxItem.h"
 
-@implementation WXHTextBox {
+@implementation DemoBoxItem {
     NSTimer *_timer;
     UIView *_twinkle_line;
 }
@@ -17,15 +17,12 @@
     self = [super init];
     if (self) {
         
-        _normalColor = [UIColor grayColor];
-        _activeColor = [UIColor orangeColor];
-        
         self.layer.borderWidth = 2.f;
         self.layer.cornerRadius = 5.f;
         self.layer.masksToBounds = YES;
         
         _twinkle_line = [[UIView alloc] init];
-        _twinkle_line.backgroundColor = _activeColor;
+        _twinkle_line.backgroundColor = [UIColor orangeColor];
         _twinkle_line.hidden = YES;
         [self addSubview:_twinkle_line];
         
@@ -44,26 +41,31 @@
 }
 
 - (void)update:(NSTimer *)sender {
-    if (_active) {
+    if (self.activated) {
         _twinkle_line.hidden = !_twinkle_line.hidden;
     }
 }
 
-- (void)setActive:(BOOL)active {
-    _active = active;
-    if (_active) {
-        self.layer.borderColor = _activeColor.CGColor;
-        _label.textColor = _activeColor;
+- (void)setActivated:(BOOL)activated {
+    [super setActivated:activated];
+    if (activated) {
+        self.layer.borderColor = [UIColor orangeColor].CGColor;
+        _label.textColor = [UIColor orangeColor];
         if (!_timer) {
             _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(update:) userInfo:nil repeats:YES];
             [_timer fire];
         }
     } else {
-        self.layer.borderColor = _normalColor.CGColor;
-        _label.textColor = _normalColor;
+        self.layer.borderColor = [UIColor grayColor].CGColor;
+        _label.textColor = [UIColor grayColor];
         [self destroy];
         _twinkle_line.hidden = YES;
     }
+}
+
+- (void)setText:(NSString *)text; {
+    [super setText:text];
+    _label.text = text;
 }
 
 - (void)destroy; {

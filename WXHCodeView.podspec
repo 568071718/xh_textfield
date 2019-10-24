@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
-  s.name         = "WXHTextBoxField"
-  s.version      = "0.0.2"
+  s.name         = "WXHCodeView"
+  s.version      = "1.0.0"
   s.summary      = "验证码文本框"
   s.description  = <<-DESC
                     一个验证码输入框，用来填写验证码
