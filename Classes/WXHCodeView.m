@@ -8,8 +8,10 @@
 
 #import "WXHCodeView.h"
 
-@interface WXHCodeView () <UIKeyInput>
+IB_DESIGNABLE @interface WXHCodeView () <UIKeyInput>
 
+@property (assign ,nonatomic) IBInspectable NSUInteger itemCount;
+@property (strong ,nonatomic) IBInspectable NSString *itemClass;
 @end
 
 @implementation WXHCodeView
@@ -19,24 +21,59 @@
 }
 
 - (id)initWithNumberOfItem:(NSUInteger)number itemClass:(Class)aClass; {
-    NSAssert([aClass conformsToProtocol:@protocol(WXHCodeViewItem)], @"自定义 item class 错误");
     self = [super init];
     if (self) {
         _spacing = 10.f;
         _edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         self.keyboardType = UIKeyboardTypeNumberPad;
         self.returnKeyType = UIReturnKeyDone;
-        
-        if (number > 0) {
-            NSMutableArray *array = [NSMutableArray arrayWithCapacity:number];
-            for (int i = 0; i < number; i ++) {
-                UIView <WXHCodeViewItem>*item = [[aClass alloc] init];
-                [self addSubview:item];
-                [array addObject:item];
-            }
-            _items = [array copy];
-        }
+        [self __setup__number:number item_class:aClass];
     } return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder; {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _spacing = 10.f;
+        _edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.keyboardType = UIKeyboardTypeNumberPad;
+        self.returnKeyType = UIReturnKeyDone;
+
+        _itemCount = 4;
+        _itemClass = @"WXHCodeViewDefaultItem";
+    } return self;
+}
+
+- (void)awakeFromNib; {
+    [super awakeFromNib];
+    [self __setup__number:_itemCount item_class:NSClassFromString(_itemClass)];
+}
+
+- (void)prepareForInterfaceBuilder; {
+    _spacing = 10.f;
+    _edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    if (_itemCount == 0) _itemCount = 4;
+    if (!_itemClass) _itemClass = @"WXHCodeViewDefaultItem";
+    [self __setup__number:_itemCount item_class:NSClassFromString(_itemClass)];
+    for (int i = 0; i < _items.count; i ++) {
+        UIView <WXHCodeViewItem>*item = _items[i];
+        if (i < _items.count - 1) {
+            item.text = @"8";
+        }
+    }
+}
+
+- (void)__setup__number:(NSInteger)number item_class:(Class)aClass; {
+    NSAssert([aClass conformsToProtocol:@protocol(WXHCodeViewItem)], @"自定义 item class 错误");
+    if (number > 0) {
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:number];
+        for (int i = 0; i < number; i ++) {
+            UIView <WXHCodeViewItem>*item = [[aClass alloc] init];
+            [self addSubview:item];
+            [array addObject:item];
+        }
+        _items = [array copy];
+    }
 }
 
 - (void)dealloc; {
@@ -61,13 +98,7 @@
         CGRect frame = CGRectMake(x, y, w, h);
         item.frame = frame;
     }
-}
-
-- (void)willMoveToSuperview:(UIView *)newSuperview; {
-    [super willMoveToSuperview:newSuperview];
-    if (newSuperview) {
-        [self updateCurrentActivatedItem];
-    }
+    [self updateCurrentActivatedItem];
 }
 
 - (BOOL)becomeFirstResponder; {
