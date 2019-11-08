@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WXHCodeView.h"
 #import "DemoBoxItem.h"
+#import "DemoPasswordItem.h"
 
 @interface ViewController () <WXHCodeViewDelegate>
 
@@ -39,7 +40,19 @@
     }
     [self.view addSubview:codeView];
     
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(codeView.frame) + 44.f, self.view.frame.size.width, 44.f)];
+    
+    WXHCodeView *passwordCodeView = [[WXHCodeView alloc] initWithNumberOfItem:6 itemClass:[DemoPasswordItem class]];
+    passwordCodeView.frame = CGRectMake(30, CGRectGetMaxY(codeView.frame) + 44.f, self.view.frame.size.width - 30 * 2, 44.f);
+    passwordCodeView.spacing = 1.f;
+    passwordCodeView.backgroundColor = [UIColor blackColor];
+    passwordCodeView.layer.cornerRadius = 5.f;
+    passwordCodeView.layer.masksToBounds = YES;
+    passwordCodeView.layer.borderWidth = 1.f;
+    passwordCodeView.layer.borderColor = [UIColor blackColor].CGColor;
+    passwordCodeView.delegate = self;
+    [self.view addSubview:passwordCodeView];
+    
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(passwordCodeView.frame) + 44.f, self.view.frame.size.width, 44.f)];
     _label.font = [UIFont systemFontOfSize:15];
     _label.textColor = [UIColor blackColor];
     _label.textAlignment = NSTextAlignmentCenter;

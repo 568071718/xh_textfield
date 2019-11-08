@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896683532375437D0008480A /* DemoPasswordItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 896683522375437D0008480A /* DemoPasswordItem.m */; };
 		89B8F67F2260964A004694A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F67E2260964A004694A6 /* AppDelegate.m */; };
 		89B8F6822260964A004694A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8F6812260964A004694A6 /* ViewController.m */; };
 		89B8F6852260964A004694A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B8F6832260964A004694A6 /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		896683512375437D0008480A /* DemoPasswordItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoPasswordItem.h; sourceTree = "<group>"; };
+		896683522375437D0008480A /* DemoPasswordItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoPasswordItem.m; sourceTree = "<group>"; };
 		89B8F67A2260964A004694A6 /* xh_textfield.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xh_textfield.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B8F67D2260964A004694A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		89B8F67E2260964A004694A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 			children = (
 				89D3D51323618867007947DC /* DemoBoxItem.h */,
 				89D3D51423618867007947DC /* DemoBoxItem.m */,
+				896683512375437D0008480A /* DemoPasswordItem.h */,
+				896683522375437D0008480A /* DemoPasswordItem.m */,
 			);
 			path = CustomDemo;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				89D3D50A23617F80007947DC /* WXHCodeView.m in Sources */,
 				89D3D50E23618039007947DC /* WXHCodeViewDefaultItem.m in Sources */,
 				89B8F6822260964A004694A6 /* ViewController.m in Sources */,
+				896683532375437D0008480A /* DemoPasswordItem.m in Sources */,
 				89B8F68D2260964B004694A6 /* main.m in Sources */,
 				89D3D51523618867007947DC /* DemoBoxItem.m in Sources */,
 				89B8F67F2260964A004694A6 /* AppDelegate.m in Sources */,
